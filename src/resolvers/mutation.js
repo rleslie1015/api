@@ -1,4 +1,4 @@
-const mongoose = require();
+const mongoose = require('mongoose');
 
 // for hashing user passwords
 const bcrypt = require('bcrypt');
@@ -67,7 +67,7 @@ module.exports = {
         }
         return await models.Note.create({
             content: args.content,
-            author: mongoose.Types.ObjectID(user.id)
+            author: mongoose.Types.ObjectId(user.id)
         });
     },
     deleteNote: async (parent, args, { models }) => {
