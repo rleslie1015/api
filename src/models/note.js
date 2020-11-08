@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { User } = require('.');
 
 const noteSchema= new mongoose.Schema(
     {
@@ -7,7 +8,8 @@ const noteSchema= new mongoose.Schema(
             required: true
         }, 
         author: {
-            type: String,
+            type: mongoose.Schema.Types,
+            ref: User,
             required: true
         }
     },
