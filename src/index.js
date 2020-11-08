@@ -1,5 +1,9 @@
 const express = require('express');
+const helmet = require('helmet');
+const cors = require('cors');
 const app = express();
+app.use(helmet());
+app.use(cors());
 // Apollo server enables us to serve data as a graphql API from a Node.js application.
 const { ApolloServer } = require('apollo-server-express');
 const typeDefs = require('./schema');
