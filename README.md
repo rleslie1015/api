@@ -4,6 +4,11 @@
 
 This repository contains code examples for the API chapters of [_JavaScript Everywhere_](https://www.jseverywhere.io/) by Adam D. Scott, published by O'Reilly Media
 
+## Standard Add Query/Mutation Work Flow
+- update schema
+- update model if needed
+- update resolver 
+
 ## Getting Help
 
 The best place to get help is our Spectrum channel, [spectrum.chat/jseverywhere](https://spectrum.chat/jseverywhere).

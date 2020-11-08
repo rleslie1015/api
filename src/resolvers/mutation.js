@@ -116,5 +116,51 @@ module.exports = {
                 new: true
             }
         );
+    },
+    toggleFavorite: async(parent, { id }, { models, user }) => {
+        if(!user) {
+            throw new AuthenticationError();
+        }
+
+        // check to see if the user has already favorited the note
+        let noteCheck = await models.Note.findById(id);
+        const hasUser = noteCheck.favoritedBy.indexOf(user.id);
+
+        // if user exists in the list
+        // pull them from the list and reduce the favorited count by one
+        if (hasUser >= 0) {
+            return await models.Note.findByIdAndUpdate(
+                id,
+                {
+                    $pull: {
+                        favoritedBy: mongoose.Types.ObjectId(user.id)
+                    },
+                    $inc: {
+                        favoriteCount: -1
+                    }
+                },
+                {
+                    // set new to true to return the updated doc
+                    new: true
+                }
+            );
+        } else {
+            // if user doesn't exists in the list 
+            // add them to list and increment the favoritedCount by 1
+            return await models.Note.findByIdAndUpdate(
+                id,
+                {
+                    $push: {
+                        favoritedBy: mongoose.Types.ObjectId(user.id)
+                    },
+                    $inc: {
+                        favoriteCount: 1
+                    }
+                },
+                {
+                    new: true
+                }
+            );
+        }
     }
 }
