@@ -4,10 +4,10 @@
 
 This repository contains code examples for the API chapters of [_JavaScript Everywhere_](https://www.jseverywhere.io/) by Adam D. Scott, published by O'Reilly Media
 
-## Add Query Work Flow
+## Standard Add Query/Mutation Work Flow
 - update schema
-- update resolver
 - update model if needed
+- update resolver 
 
 ## Getting Help
 
