@@ -8,7 +8,9 @@ module.exports = gql`
         hello: String
         notes: [Note!]!
         note(id: ID!): Note
-        getUsers: [User!]!
+        user(username: String!): User
+        users: [User!]!
+        me: User!
     }
 
     type Note {
