@@ -1,6 +1,7 @@
 module.exports = {
     notes: async (parent, args, { models }) => {
-        return await models.Note.find();
+        // limit the amount that can be requested  to prevent queries that can overload our server or database
+        return await models.Note.find().limit();
     },
     note: async (parent, args, { models }) => {
         return await models.Note.findById(args.id);

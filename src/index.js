@@ -4,6 +4,11 @@ const cors = require('cors');
 const app = express();
 app.use(helmet());
 app.use(cors());
+
+// modules to help set limits and keep our server from being overloaded 
+const depthLimit = require('graphql-depth-limit');
+const { createComplexityLimitRule } = require('graphql-validation-complexity'); 
+
 // Apollo server enables us to serve data as a graphql API from a Node.js application.
 const { ApolloServer } = require('apollo-server-express');
 const typeDefs = require('./schema');
@@ -32,6 +37,7 @@ require('dotenv').config();
 const server = new ApolloServer({ 
     typeDefs, 
     resolvers,
+    validationRules: [ depthLimit(5), createComplexityLimitRule(1000)],
     context: ({ req }) => {
         // get the user token from the headers
         const token = req.headers.authorization;
