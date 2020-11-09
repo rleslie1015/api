@@ -55,7 +55,7 @@ server.applyMiddleware({ app, path: '/api'});
 
 app.get('/', (req, res) => res.send('Hello World'));
 
-const port = process.env.PORT || 4000;
+const port = process.env.PORT
 const DB_HOST = process.env.DB_HOST;
 
 db.connect(DB_HOST);
