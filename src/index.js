@@ -59,4 +59,4 @@ const port = process.env.PORT
 const DB_HOST = process.env.DB_HOST;
 
 db.connect(DB_HOST);
-app.listen(4000,  () => console.log(`GraphQL server running at http://localhost:${port}${server.graphqlPath}`));
+app.listen(port,  () => console.log(`GraphQL server running at http://localhost:${port}${server.graphqlPath}`));
